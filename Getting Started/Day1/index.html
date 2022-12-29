@@ -1,0 +1,71 @@
+//Learning Vue - Day 1
+
+<!-- The Agenda of Day 1 Is to learn Simple Declarative Rendering in Vue.js 3.0
+With declarative rendering, it is the data the determines how the DOM is rendered. Web frameworks, 
+such as Vue, allow us to render the DOM declaratively. We provide the data, 
+and let the framework determine what it needs to do in order to display that data correctly -->
+
+<!-- Steps: -->
+<!-- 1: Create a index.html file in your code editor
+     2: write .doc and press Tab
+     3: Add Script Tags and createApp, Also perform one at a Time -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    //importing Vue package and using it in index.html file to run the application
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    //Mounting the app with div
+    <div id="app">
+        //greet recieves the data returned with the help interpolation
+        <p>{{greet}}</p>
+
+        //Bolean value is displayed also using ternary operator the true value = yes and false = no 
+        <p>Is It Morning {{isItTrue ? 'Yes':'No'}}</p>
+
+        //Array Value for Fruit is displayed using index value [0],[1],[2]
+        <p>{{fruits[0]}}</p>
+
+        //Object Value for cars are displayed with the help of .c1, .c2, .c3
+        <p>{{car.c1}}</p>
+
+        //Calling of Function
+        <p>{{func()}}</p>
+    </div>
+
+</body>
+<script>
+    const date = new Date().toLocaleDateString()
+    const App = {
+        data(){
+            return{
+                //Object greet passes Good Morning in key value pair
+                greet: 'Good Morning',
+                //Passing Boolean Values 
+                isItTrue: false,
+                //Example of Array 
+                fruits :['Orange','Mango','Apple'],
+                //Example of Object
+                car: {
+                    c1: 'Bugatti',
+                    c2: 'Lamborgini',
+                    c3: 'Land rover'
+                },
+                //Example of Using a Function in Vue
+                func:()=>{
+                    return 'Message from function'
+                }
+            }
+            
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>
