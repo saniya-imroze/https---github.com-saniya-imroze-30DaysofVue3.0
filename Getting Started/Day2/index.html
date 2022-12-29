@@ -1,0 +1,72 @@
+<!-- Leaning Vue - Day 2
+
+We will be diving into Methods -->
+
+<!-- Methods- A Vue method is an object associated with the Vue instance. Functions are defined inside the methods object. 
+Methods are useful when you need to perform some action with v-on
+directive on an element to handle events. Functions defined inside the methods object can be further called for performing actions. -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Example of simple method call welcome() method -->
+        <p>{{welcome()}}</p>
+        <!-- Example when we need to call some other information inside the data -->
+        <p>{{greeting()}}</p>
+
+        <p>{{randomGame()}}</p>
+
+    </div>
+    
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                greet: 'Good Morning World',
+                isItTrue: true,
+                names:['Kobra','Jolly','Sumo'],
+                obj:{
+                    error:'404! ERROR'
+                    
+                }
+            }
+        },
+        // Creating Methods, Keep in Mind it will be after Data block seperated with comma.
+        methods:{
+            welcome(){
+                return 'Hello Guys and Welcome'
+            },
+            greeting(){
+            
+                //  when we are trying to return greet, it searches for it outside the scope and hence we require this,
+                // so whenever we require reference to something that lives inside the data we just need to say this. 
+                // therefore vue will find it.
+                return this.greet
+
+            },
+
+            // A random Greeting plus the name is randomly selected and these are Javascript Basics including Random Function, If it True
+            // is True then it displays Greeting and Name, while it shows error.
+            randomGame(){
+                const randomName = this.names[Math.floor(Math.random()* this.names.length)]
+                if(this.isItTrue){
+                    return `${this.greet}, my name is ${randomName}`
+                }
+                return this.obj.error
+            }
+        }
+    }
+
+    Vue.createApp(App).mount('#app')
+
+</script>
+</html>
