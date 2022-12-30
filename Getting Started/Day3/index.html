@@ -1,0 +1,54 @@
+//Learing Vue - Day 3 
+
+<!-- Built in Derivative -->
+
+    <!-- Reference : https://www.geeksforgeeks.org/vue-js-conditional-rendering/ -->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       
+        <img v-bind:src="src" v-bind:alt="alt"/>
+        <hr/>
+        <a v-bind:href="link">Youtube</a>
+        <hr/>
+
+         <!-- v-text works by setting the element's textContent property,
+         so it will overwrite any existing content inside the 
+         element. If you need to update the part of textContent,
+          you should use mustache interpolations instead. -->
+        <p v-text = "text"></p>
+        <hr/>
+
+        <!-- Contents of v-html are inserted as plain HTML - 
+        Vue template syntax will not be processed. 
+        If you find yourself trying to compose templates 
+        using v-html, try to rethink the solution by using components instead. -->
+        <p v-html="html"></p>
+    </div>
+    
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                src:'https://picsum.photos/200',
+                alt: 'Only Picture',
+                link: 'https://www.youtube.com/',
+                text: 'Helloo, Welcome to the Real World.',
+                html: '<strong>This is Under HTML</strong>'
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+
+</script>
+</html>
